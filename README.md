@@ -1,127 +1,92 @@
 # Portfolio — Chenyu (Yvette) Wu
 
-A one-page portfolio for a data and software job search in Vancouver, BC. The whole
-site is a single HTML file with no build step and no external asset hosting: React,
-styles, photos and all content live inside `index.html`.
+A one-page living portfolio for a data and software job search in Vancouver, BC. The entire site is built into a single, highly refined HTML file with zero external asset hosting: React, styles, photos, interactive widgets, and Easter eggs all live inside `index.html`.
 
-**Live:** https://mmm1122.github.io/Yvette-Wu/
+**Live:** [https://mmm1122.github.io/Yvette-Wu/](https://mmm1122.github.io/Yvette-Wu/)
 
 ---
 
-## Why one file
+## Why One File
 
-The site has to be easy to hand over, easy to open offline, and impossible to break
-by a missing asset. Everything is inlined:
+The site is designed to be easily shared, opened offline, and resilient against missing assets or broken CDN links:
 
-| | |
+| Layer | Implementation |
 |---|---|
-| React 18 + ReactDOM | inlined production builds, no CDN |
-| Styles | one `<style>` block, CSS custom properties for theming |
-| Photos | three JPEGs as base64 data URIs (~700 KB total, recompressed from 6 MB) |
-| Components | plain `React.createElement`, no JSX, so no Babel or bundler |
-| Total | ~880 KB, one HTTP request |
+| React 18 + ReactDOM | Inlined production builds, zero CDN dependencies |
+| Styles | Self-contained `<style>` block with dynamic CSS variables |
+| Visual Assets | Base64 data URIs embedded directly in the markup |
+| Components | Native `React.createElement` (no build step, Babel, or bundlers needed) |
+| Footprint | ~880 KB total payload served in a single HTTP request |
 
-The only external dependencies are Google Fonts (Fraunces + Public Sans) and, if the
-guestbook is switched on, a Google Apps Script endpoint.
+The only external dependencies are Google Fonts ([Zen Old Mincho](https://fonts.google.com/specimen/Zen+Old+Mincho) for editorial display and [Public Sans](https://fonts.google.com/specimen/Public+Sans) for body and charts) and an optional Google Apps Script endpoint for the guestbook.
+
+---
+
+## Interactive Details & Easter Eggs
+
+Beyond a clean resume and project showcase, this portfolio weaves in subtle physical and cultural interactions that reflect personality and craft:
+
+* **Dynamic Cursor Lighting & Glow**: Ambient light subtly shifts across the viewport tracking cursor coordinates. Cards and backdrops react with layered depth, specular paper highlights, and realistic edge contours without cluttering legibility.
+* **"Open the Door" Portrait Interaction**: Instead of an ordinary headshot gallery, the hero profile is tucked behind a tactile door frame. Click to swing the door open and reveal the portrait beneath, or click again to close it with smooth physics and accessible ARIA states.
+* **Interactive Wooden Fish (木鱼 · Pause)**: A calming micro-interaction section before departure. Clicking the wooden fish triggers haptic visual feedback, a gentle percussive tick, and floating "功德 +1 / Merit +1" counters for a brief moment of mindful pause.
+* **Scroll & Handscroll (手卷) Art Direction**: Wide viewports reveal a continuous vertical mounted edge running along the page gutter, punctuated by English vertical slip tabs (*Experience*, *Projects*, *Skills*, *About*, *Pause*, *Guestbook*, *Contact*) reminiscent of handscroll title slips (*签条*).
+* **Threshold Explorer**: The Credit Default project embeds an active policy slider to demonstrate real-world trade-offs across four cutoffs on a fixed classifier—illustrating precision, recall, and flagged portfolio share in real time.
+
+---
 
 ## Sections
 
-1. **Hero** — name, one-line positioning, and an availability card stating permanent
-   resident status, what roles are wanted, and location. This is the part written for
-   a recruiter's first ten seconds.
-2. **At a glance** — four facts: years of experience, GPA, degree in progress, PR status.
-3. **Experience** — an interactive study/work timeline (2017–2028); selecting a bar
-   scrolls to that entry and highlights it. Work and education entries below.
-4. **Projects** — three projects, each collapsed to a title, three headline figures and
-   links. Expanding one shows the technical decisions and their trade-offs. The credit
-   default project includes a threshold explorer: four decision cutoffs on one fixed
-   classifier, showing how recall, precision and share-of-book flagged move together.
-5. **Skills** — four groups as scannable chips.
-6. **About** — travel, psychology, guzheng, detective stories, plus volunteer work.
-7. **Guestbook** — public messages, hidden until connected (see below).
-8. **Contact** — a private message form, plus email, LinkedIn and GitHub.
+1. **Hero** — Name, positioning, cinnabar seal ("yw"), availability badge, and the interactive "Open the door" photo reveal.
+2. **At a Glance** — Four headline metrics: professional experience, GPA, degree in progress (UBC BCS, expected 2028), and PR status.
+3. **Experience** — Interactive multi-track timeline spanning 2017 to 2028 with unified date formatting across banking risk roles and academic degrees.
+4. **Projects** — Collapsible technical case studies showing trade-offs, architecture decisions, and live interactive data widgets.
+5. **Skills** — Domain-categorized technical badges (Languages, Machine Learning, Data/Risk, Tools).
+6. **About** — Hobbies, outdoor expeditions, guzheng music background, psychology, and volunteering.
+7. **Pause (木鱼)** — The interactive wooden fish de-stress Easter egg.
+8. **Guestbook** — Moderated community board powered by Google Sheets (safe by default).
+9. **Contact** — Direct message form alongside GitHub, LinkedIn, and email links.
 
-## Editing content
+---
 
-All copy lives in data arrays at the top of the script block, not in markup. Find the
-array, edit the strings, save.
+## Data Structure & Customization
 
-| What to change | Where |
+Content is decoupled from the UI markup and organized cleanly into top-level JavaScript arrays:
+
+| Target | Array / Variable |
 |---|---|
-| Jobs and bullets | `JOBS` |
-| Degrees | `EDU` |
-| Timeline bars | `TIMELINE` (`start` / `end` are decimal years, e.g. `2024.17` = March 2024) |
-| Projects, figures, tags, links | `PROJECTS` |
-| Skill groups | `SKILLS` |
-| Threshold explorer data | `POLICIES` |
-| Photos | `AVATAR`, `SOLO`, `MORAINE` (base64 data URIs) |
-| Colours, spacing, type | CSS custom properties under `:root` and `[data-theme="light"]` |
+| Work experience & bullets | `JOBS` |
+| Academic history & degrees | `EDU` |
+| Multi-track timeline bars | `TIMELINE` (decimal year coordinates, e.g. `2025.0` for Jan 2025) |
+| Project deep dives & links | `PROJECTS` |
+| Interactive policy metrics | `POLICIES` |
+| Skill categories | `SKILLS` |
+| Photography assets | `AVATAR`, `SOLO`, `MORAINE` (base64 data URIs) |
+| Color palettes & scroll lines | CSS custom variables under `:root` and `[data-theme="light"]` |
 
-## Themes and printing
+---
 
-Dark green by default, with a toggle in the top bar for a light green theme. Both
-palettes were checked against WCAG AA: body text is 16.4:1 on dark and 15.2:1 on
-light; the faintest supporting text is 5.9:1 and 4.4:1.
+## Design System & Accessibility
 
-A print stylesheet turns either theme into black on white, hides the navigation and
-photos, expands every collapsed project so nothing is lost, and appends full URLs
-after the contact links. Recruiters who save the page as a PDF get a readable
-document rather than a page of dark ink.
+* **Artisanal Palette**: Mineral malachite and deep ink grounds paired with gamboge accents, azurite highlights, and authentic cinnabar red (`#C8503A`) for seals and emphasis markers.
+* **Dual Themes**: Tested for WCAG AA contrast on both dark jade and light cream modes, toggleable from the navigation bar.
+* **Print Stylesheet**: Strips out dark inks, expands all collapsed project accordions, reveals raw URLs, and formats content into a clean black-and-white resume layout optimized for PDF exports.
+* **Accessible Foundation**: Full keyboard navigation support, skip link, polite screen reader updates (`role="status"`), explicit SVG chart semantics (`role="img"`), and a strict `prefers-reduced-motion` fallback that turns off pointer tracking and heavy transitions.
 
-## Guestbook
+---
 
-Public messages, stored in a Google Sheet through a Google Apps Script web app. No
-server, no database, and visitors do not need an account to post.
+## Guestbook Architecture
 
-While `GUESTBOOK_API` is an empty string the entire section and its nav link stay
-hidden, so the page never shows an empty board. To preview the layout before
-connecting anything, open the page with `?guestbook=demo`.
+Messages are dispatched to a serverless Google Apps Script connected to Google Sheets:
 
-Setup instructions are in the header of [`guestbook-apps-script.gs`](guestbook-apps-script.gs).
-In short: create a sheet with `date | name | message | approved` columns, paste the
-script into Extensions > Apps Script, deploy it as a web app with access set to
-*Anyone*, and paste the `/exec` URL into `GUESTBOOK_API`.
+* **Moderated by Default**: Incoming submissions default to `approved = FALSE`. The API only retrieves approved rows, preventing unreviewed posts from being fetched.
+* **Anti-Spam Controls**: Includes invisible honeypot trap fields, 1-hour duplicate content throttling, and strict string length boundaries (40 characters for names, 500 characters for messages).
+* **Demo Sandbox**: Adding `?guestbook=demo` to the query string simulates active posts for design and development checks without needing live backend credentials.
 
-Protections in place:
+---
 
-- **Moderation by default.** New messages arrive with `approved = FALSE` and stay
-  invisible. The endpoint only ever returns approved rows, so unapproved messages
-  cannot be read even by calling it directly.
-- **Honeypot field** — hidden from people, filled in by bots; those submissions are
-  silently dropped and reported as successful so the bot does not retry.
-- **Duplicate guard** — an identical message within an hour is rejected, which covers
-  double-clicks and the simplest flooding.
-- **Length caps** — 40 characters for a name, 500 for a message, enforced on both the
-  client and the server.
-- **Email notification** on each new post, so moderation does not depend on
-  remembering to check the sheet.
+## Local Development
 
-Loading, empty, and failed states are all written out; the failure state offers a
-retry rather than leaving a blank space.
+No package manager or bundler required. Open `index.html` directly in any modern browser, or serve it locally via:
 
-## Accessibility
-
-- Skip link, visible keyboard focus rings, and `aria-current` on the active nav item.
-- The timeline is a keyboard-reachable group of buttons with descriptive labels.
-- Chart bars carry `role="img"` and a text label, so their values are not conveyed by
-  colour and width alone.
-- Form status messages use `role="status"` and `aria-live="polite"`.
-- `prefers-reduced-motion` disables all animation and smooth scrolling.
-- Responsive to 390 px; the timeline scrolls horizontally rather than compressing.
-
-## Local development
-
-No toolchain. Open `index.html` in a browser and edit it in any text editor.
-
-One caveat: some browsers block network requests from `file://` pages, so the
-guestbook may not load locally even when correctly configured. Test it on GitHub
-Pages.
-
-## Credits
-
-Layout and structure inspired by [Soumyajit's Portfolio](https://github.com/soumyajit4419/Portfolio).
-Type is [Fraunces](https://fonts.google.com/specimen/Fraunces) and
-[Public Sans](https://fonts.google.com/specimen/Public+Sans). The GitHub mark comes
-from [Simple Icons](https://simpleicons.org) (CC0).
-
-Photos are my own.
+```bash
+python3 -m http.server 8000

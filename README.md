@@ -46,7 +46,7 @@ This restraint is intentional: the fish is a companion to discover occasionally.
 
 At the bottom of the page, **“A little pause.”** invites visitors to tap a wooden fish, or *muyu* (木鱼), a traditional wooden percussion instrument.
 
-Each tap brings the mallet down, gives the wooden fish a small bounce, and produces a ripple with **“功德 +1 / Merit +1.”** The knock is synthesized in the browser, with its own sound toggle. Keyboard users can focus the instrument with Tab and tap with Space or Enter.
+Each tap brings the mallet down, gives the wooden fish a small bounce, and produces a ripple with **“功德（updated to Offer) +1 / Merit +1.”** The knock is synthesized in the browser, with its own sound toggle. Keyboard users can focus the instrument with Tab and tap with Space or Enter.
 
 I placed this Easter egg after the résumé content as a lighthearted way to end the visit, and as a small reference to my cultural background.
 

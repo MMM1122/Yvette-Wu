@@ -1,92 +1,115 @@
-# Portfolio — Chenyu (Yvette) Wu
-
-A one-page living portfolio for a data and software job search in Vancouver, BC. The entire site is built into a single, highly refined HTML file with zero external asset hosting: React, styles, photos, interactive widgets, and Easter eggs all live inside `index.html`.
-
 **Live:** [https://mmm1122.github.io/Yvette-Wu/](https://mmm1122.github.io/Yvette-Wu/)
 
----
+# Yvette Wu · Personal Portfolio
 
-## Why One File
+A personal portfolio with a résumé at its heart, a lotus pond in the margins, and a few small discoveries along the way.
 
-The site is designed to be easily shared, opened offline, and resilient against missing assets or broken CDN links:
+I'm Chenyu (Yvette) Wu, a computer science student at UBC with three years of credit risk and data experience at HSBC and RBC. This website brings together my experience, education, projects, and skills, with a little room for the person behind the résumé.
 
-| Layer | Implementation |
-|---|---|
-| React 18 + ReactDOM | Inlined production builds, zero CDN dependencies |
-| Styles | Self-contained `<style>` block with dynamic CSS variables |
-| Visual Assets | Base64 data URIs embedded directly in the markup |
-| Components | Native `React.createElement` (no build step, Babel, or bundlers needed) |
-| Footprint | ~880 KB total payload served in a single HTTP request |
+I wanted visitors to find the essentials easily: what I have worked on, what I am learning, and how I approach problems. Along the way, they can open a window, notice light moving across a project card, or tap a wooden fish before leaving. These details give the site a sense of personality while keeping the focus on my work.
 
-The only external dependencies are Google Fonts ([Zen Old Mincho](https://fonts.google.com/specimen/Zen+Old+Mincho) for editorial display and [Public Sans](https://fonts.google.com/specimen/Public+Sans) for body and charts) and an optional Google Apps Script endpoint for the guestbook.
+## Design direction
 
----
+The visual language draws from a Chinese handscroll: serif typography, a small vermilion name seal, fine dividing lines, and generous space. Pale blue-green lotus leaves and soft pink flowers frame the page.
 
-## Interactive Details & Easter Eggs
+Every fresh visit starts in **Light mode**, with a manual switch to dark mode. Experience, projects, and contact information remain easy to find. Motion stays at the edges or responds to a deliberate interaction, and visitors choose whether to turn on sound.
 
-Beyond a clean resume and project showcase, this portfolio weaves in subtle physical and cultural interactions that reflect personality and craft:
+## Small details, deliberate choices
 
-* **Dynamic Cursor Lighting & Glow**: Ambient light subtly shifts across the viewport tracking cursor coordinates. Cards and backdrops react with layered depth, specular paper highlights, and realistic edge contours without cluttering legibility.
-* **"Open the Door" Portrait Interaction**: Instead of an ordinary headshot gallery, the hero profile is tucked behind a tactile door frame. Click to swing the door open and reveal the portrait beneath, or click again to close it with smooth physics and accessible ARIA states.
-* **Interactive Wooden Fish (木鱼 · Pause)**: A calming micro-interaction section before departure. Clicking the wooden fish triggers haptic visual feedback, a gentle percussive tick, and floating "功德 +1 / Merit +1" counters for a brief moment of mindful pause.
-* **Scroll & Handscroll (手卷) Art Direction**: Wide viewports reveal a continuous vertical mounted edge running along the page gutter, punctuated by English vertical slip tabs (*Experience*, *Projects*, *Skills*, *About*, *Pause*, *Guestbook*, *Contact*) reminiscent of handscroll title slips (*签条*).
-* **Threshold Explorer**: The Credit Default project embeds an active policy slider to demonstrate real-world trade-offs across four cutoffs on a fixed classifier—illustrating precision, recall, and flagged portfolio share in real time.
+### Open a window to meet me
 
----
+The portrait on the first screen sits behind a pair of shutters. Clicking opens them outward, brightens the photograph, and lets a sweep of warm light pass across it. Clicking again closes the window.
 
-## Sections
+I wanted the portrait to feel like a small invitation. Opening it gives the visitor a part in the introduction, echoing the message on the window: **“Come say hello.”**
 
-1. **Hero** — Name, positioning, cinnabar seal ("yw"), availability badge, and the interactive "Open the door" photo reveal.
-2. **At a Glance** — Four headline metrics: professional experience, GPA, degree in progress (UBC BCS, expected 2028), and PR status.
-3. **Experience** — Interactive multi-track timeline spanning 2017 to 2028 with unified date formatting across banking risk roles and academic degrees.
-4. **Projects** — Collapsible technical case studies showing trade-offs, architecture decisions, and live interactive data widgets.
-5. **Skills** — Domain-categorized technical badges (Languages, Machine Learning, Data/Risk, Tools).
-6. **About** — Hobbies, outdoor expeditions, guzheng music background, psychology, and volunteering.
-7. **Guestbook** — Moderated community board powered by Google Sheets (safe by default).
-8. **Contact** — Direct message form alongside GitHub, LinkedIn, and email links.
-9. **Pause (木鱼)** — The interactive wooden fish de-stress Easter egg.
+### Light that follows the cursor
 
----
+On desktop, a soft highlight follows the cursor across each project card, accompanied by a slight perspective tilt. When the cursor leaves, the card returns to rest.
 
-## Data Structure & Customization
+The effect gives the surface the feel of paper catching the light. It is enabled only on devices with a fine pointer and hover support, when reduced motion is not requested.
 
-Content is decoupled from the UI markup and organized cleanly into top-level JavaScript arrays:
+### A lotus pond in the margins
 
-| Target | Array / Variable |
-|---|---|
-| Work experience & bullets | `JOBS` |
-| Academic history & degrees | `EDU` |
-| Multi-track timeline bars | `TIMELINE` (decimal year coordinates, e.g. `2025.0` for Jan 2025) |
-| Project deep dives & links | `PROJECTS` |
-| Interactive policy metrics | `POLICIES` |
-| Skill categories | `SKILLS` |
-| Photography assets | `AVATAR`, `SOLO`, `MORAINE` (base64 data URIs) |
-| Color palettes & scroll lines | CSS custom variables under `:root` and `[data-theme="light"]` |
+The background takes inspiration from Chinese ink wash and watercolor: translucent blue-green leaves, delicate veins, pale pink petals, and open water.
 
----
+The artwork sits around the edges, leaving the center clear for reading. Its low opacity and slow movement give the pond a faint sense of life. The same setting connects the ripples, koi, and quieter interactions elsewhere on the page.
 
-## Design System & Accessibility
+### One quiet koi and a little rain
 
-* **Artisanal Palette**: Mineral malachite and deep ink grounds paired with gamboge accents, azurite highlights, and authentic cinnabar red (`#C8503A`) for seals and emphasis markers.
-* **Dual Themes**: Tested for WCAG AA contrast on both dark jade and light cream modes, toggleable from the navigation bar.
-* **Print Stylesheet**: Strips out dark inks, expands all collapsed project accordions, reveals raw URLs, and formats content into a clean black-and-white resume layout optimized for PDF exports.
-* **Accessible Foundation**: Full keyboard navigation support, skip link, polite screen reader updates (`role="status"`), explicit SVG chart semantics (`role="img"`), and a strict `prefers-reduced-motion` fallback that turns off pointer tracking and heavy transitions.
+A single small koi swims in the space outside the main content. Its muted color and low opacity keep it subtle, while sparse raindrops form slowly expanding ripples along the sides.
 
----
+The koi becomes slightly active when the visitor scrolls, then gradually settles as they stop to read. It becomes a little livelier near the wooden fish section at the bottom. Its drawing area is clipped to the outer margin, and the decorative layers do not intercept clicks.
 
-## Guestbook Architecture
+This restraint is intentional: the fish is a companion to discover occasionally. In the current version, it does **not** chase the cursor through the résumé. The **Pause pond / Resume pond** button lets visitors stop or resume the pond animation.
 
-Messages are dispatched to a serverless Google Apps Script connected to Google Sheets:
+### A wooden fish before you go
 
-* **Moderated by Default**: Incoming submissions default to `approved = FALSE`. The API only retrieves approved rows, preventing unreviewed posts from being fetched.
-* **Anti-Spam Controls**: Includes invisible honeypot trap fields, 1-hour duplicate content throttling, and strict string length boundaries (40 characters for names, 500 characters for messages).
-* **Demo Sandbox**: Adding `?guestbook=demo` to the query string simulates active posts for design and development checks without needing live backend credentials.
+At the bottom of the page, **“A little pause.”** invites visitors to tap a wooden fish, or *muyu* (木鱼), a traditional wooden percussion instrument.
 
----
+Each tap brings the mallet down, gives the wooden fish a small bounce, and produces a ripple with **“功德 +1 / Merit +1.”** The knock is synthesized in the browser, with its own sound toggle. Keyboard users can focus the instrument with Tab and tap with Space or Enter.
 
-## Local Development
+I placed this Easter egg after the résumé content as a lighthearted way to end the visit, and as a small reference to my cultural background.
 
-No package manager or bundler required. Open `index.html` directly in any modern browser, or serve it locally via:
+<details>
+<summary>One more Easter egg, for a little patience</summary>
+
+A plant beside the wooden fish gradually appears as the tap count grows:
+
+- **10 taps:** a small leaf begins to emerge.
+- **30 taps:** more of the plant is revealed.
+- **50 taps:** the full illustration appears, completing its little bloom.
+
+The count lasts for the current page visit and resets on refresh.
+
+</details>
+
+### A soundtrack you can choose
+
+The background track is **《氤氲之森》 by CMJ**, chosen to accompany the quiet atmosphere of the pond.
+
+Music is **off by default**. The **Play music / Pause music** button starts or pauses the track. Playback begins at 18% volume, loops, and resumes from the same position after a pause.
+
+The current version embeds the MP3 directly in the page, so there is no external video player to open. Background music and wooden fish sounds have separate controls.
+
+## Reading and interaction
+
+- **Résumé first:** experience, projects, skills, and contact information form the main structure.
+- **Responsive layout:** content and navigation adapt to the screen; cursor effects run only on suitable devices.
+- **Motion preferences:** the site responds to `prefers-reduced-motion`, reducing or disabling relevant animations and leaving the koi still.
+- **Keyboard support:** the portrait window, wooden fish, theme switch, and music controls use buttons with focus indicators and accessible labels.
+- **Print styles:** decorative pond layers, music controls, and the wooden fish section are hidden when printing, keeping the main content in focus.
+
+## Implementation
+
+The current site is a standalone **`index.html`**. It can be opened directly without installing dependencies or running a build.
+
+- **React** organizes the portfolio content, portrait window, and wooden fish interactions.
+- **CSS** provides the light and dark themes, handscroll styling, shutter perspective, lighting effects, and responsive layout.
+- **Canvas 2D** renders the koi and rain ripples. Small offsets between image slices give the fish its gentle tail movement.
+- **Web Animations API and Web Audio API** coordinate the mallet, wooden fish bounce, and synthesized percussion sound.
+- **HTML Audio** handles the embedded MP3, including playback, pause, and looping.
+- **IntersectionObserver** supports navigation indicators and section reveal effects.
+
+Images, illustrations, music, and the React runtime are embedded in the HTML, making the site convenient to save and share as one file. The tradeoff is a larger file size. Fonts load through Google Fonts, with system font fallbacks when unavailable.
+
+## View locally
+
+Download the repository and open `index.html` in a browser. The page starts in Light mode with music off.
+
+Alternatively, run a local static server from the project directory:
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Then visit `http://127.0.0.1:8000/`. The embedded music works with either approach without an external music player.
+
+## Credits
+
+- **Background music:** **CMJ —《氤氲之森》**. [Listen on YouTube Music](https://music.youtube.com/watch?v=0Sx-55iSBzg).
+- **Pond artwork:** AI-assisted illustrations inspired by supplied lotus and koi references, integrated with the page layout and animation.
+- **Fonts:** Public Sans and Zen Old Mincho.
+
+## Contact
+
+[Email](mailto:yvettewu2017@gmail.com) · [LinkedIn](https://www.linkedin.com/in/chenyu-yvette-wu/) · [GitHub](https://github.com/MMM1122)

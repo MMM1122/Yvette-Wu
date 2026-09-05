@@ -42,9 +42,9 @@ Beyond a clean resume and project showcase, this portfolio weaves in subtle phys
 4. **Projects** — Collapsible technical case studies showing trade-offs, architecture decisions, and live interactive data widgets.
 5. **Skills** — Domain-categorized technical badges (Languages, Machine Learning, Data/Risk, Tools).
 6. **About** — Hobbies, outdoor expeditions, guzheng music background, psychology, and volunteering.
-7. **Pause (木鱼)** — The interactive wooden fish de-stress Easter egg.
-8. **Guestbook** — Moderated community board powered by Google Sheets (safe by default).
-9. **Contact** — Direct message form alongside GitHub, LinkedIn, and email links.
+7. **Guestbook** — Moderated community board powered by Google Sheets (safe by default).
+8. **Contact** — Direct message form alongside GitHub, LinkedIn, and email links.
+9. **Pause (木鱼)** — The interactive wooden fish de-stress Easter egg.
 
 ---
 

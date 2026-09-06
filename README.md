@@ -96,14 +96,6 @@ Images, illustrations, music, and the React runtime are embedded in the HTML, ma
 
 Download the repository and open `index.html` in a browser. The page starts in Light mode with music off.
 
-Alternatively, run a local static server from the project directory:
-
-```bash
-python3 -m http.server 8000 --bind 127.0.0.1
-```
-
-Then visit `http://127.0.0.1:8000/`. The embedded music works with either approach without an external music player.
-
 ## Credits
 
 - **Background music:** **CMJ —《氤氲之森》**. [Listen on YouTube Music](https://music.youtube.com/watch?v=0Sx-55iSBzg).

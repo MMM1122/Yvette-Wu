@@ -1,4 +1,4 @@
-/* 联系方式、邮件编辑表单和留言簿。 */
+/* Contact information, email composition form, and guestbook. */
 
 function MessageForm() {
   const [name, setName] = useState("");

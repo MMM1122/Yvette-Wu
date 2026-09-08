@@ -1,4 +1,4 @@
-/* 工作与教育时间轴、项目卡片、技能和关于我。 */
+/* Work and education timeline, project cards, skills, and about me. */
 
 function Timeline() {
   const jump = id => {

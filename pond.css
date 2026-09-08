@@ -1,0 +1,256 @@
+/* Lotus pond: artwork stays behind the reading surface. */
+:root {
+  --pond-paper:#071b20;
+  --pond-image-opacity:.23;
+  --pond-blend:screen;
+  --pond-ring:122,192,202
+}
+
+[data-theme="light"] {
+  --pine:#f4f9f8;
+  --pine-2:rgba(250,253,252,.90);
+  --moss:#e1eeed;
+  --moss-2:#eaf3f2;
+  --text:#16373b;
+  --soft:#3e6065;
+  --dim:#57777c;
+  --edge:rgba(32,102,116,.16);
+  --edge-2:rgba(32,102,116,.29);
+  --jade:#176d7a;
+  --jade-2:#288492;
+  --jade-deep:#155766;
+  --sand:#866328;
+  --pill-bg:rgba(35,128,142,.08);
+  --pill-edge:rgba(35,128,142,.30);
+  --pill-fg:#155d69;
+  --avail-bg:linear-gradient(140deg,rgba(225,241,239,.93),rgba(250,253,252,.91));
+  --avail-edge:rgba(35,128,142,.29);
+  --avail-strong:#155d69;
+  --feature-bg:linear-gradient(150deg,rgba(230,244,242,.94),rgba(250,253,252,.95));
+  --tag-fg:#155d69;
+  --tag-bg:rgba(35,128,142,.08);
+  --arch-ring:rgba(35,128,142,.33);
+  --pond-paper:#f5f9f8;
+  --pond-image-opacity:.40;
+  --pond-blend:multiply;
+  --pond-ring:42,124,144;
+}
+
+body,[data-theme="light"] body {
+  background:var(--pond-paper);
+  isolation:isolate
+}
+
+body::before,body::after,.hero:before {
+  display:none
+}
+
+#root {
+  position:relative;
+  z-index:1
+}
+
+.pond-scene {
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:-1;
+  contain:strict
+}
+
+.pond-art {
+  position:absolute;
+  inset:-3%;
+  background-image:url('../assets/images/lotus-pond.png');
+  background-size:cover;
+  background-position:center;
+  opacity:var(--pond-image-opacity);
+  mix-blend-mode:var(--pond-blend);
+  animation:pond-breath 22s ease-in-out infinite alternate;
+  will-change:transform
+}
+
+.pond-veil {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent 0%,var(--pond-paper) 38%,var(--pond-paper) 64%,transparent 100%);
+  opacity:.54
+}
+
+@keyframes pond-breath {
+  from {
+    transform:translate3d(-.4%,.35%,0) scale(1)
+  }
+
+  to {
+    transform:translate3d(.4%,-.35%,0) scale(1.025)
+  }
+
+}
+
+.pond-rain,.pond-koi {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none
+}
+
+.pond-rain {
+  z-index:0
+}
+
+.pond-koi {
+  z-index:0;
+  filter:saturate(.58)
+}
+
+.pond-control {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:40;
+  min-height:44px;
+  padding:.45rem .85rem;
+  border:1px solid var(--edge-2);
+  border-radius:999px;
+  background:var(--pine-2);
+  color:var(--soft);
+  font:500 .8125rem var(--body);
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  box-shadow:0 3px 16px #092c3310
+}
+
+.pond-control:hover {
+  color:var(--text);
+  border-color:var(--jade)
+}
+
+html[data-pond-paused="true"] .pond-art {
+  animation-play-state:paused
+}
+
+[data-theme="light"] .topbar {
+  background:rgba(244,249,248,.90)
+}
+
+[data-theme="light"] .button.primary:hover {
+  background:#155766
+}
+
+[data-theme="light"] a:hover {
+  color:#155766
+}
+
+@media(max-width:680px) {
+  .pond-art {
+    background-size:auto 112%;
+    background-position:right center;
+    opacity:calc(var(--pond-image-opacity) * .8)
+  }
+
+  .pond-veil {
+    opacity:.65
+  }
+
+  .pond-control {
+    right:10px;
+    bottom:10px;
+    font-size:.75rem
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .pond-art {
+    animation:none;
+    will-change:auto
+  }
+
+  .pond-control {
+    display:none
+  }
+
+}
+
+@media print {
+  .pond-scene,.pond-rain,.pond-koi,.pond-control {
+    display:none!important
+  }
+
+}
+
+/* Keep sound controls alongside the quiet pond controls. */
+.ambient-controls {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:40;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  max-width:calc(100vw - 36px)
+}
+
+.ambient-controls .pond-control {
+  position:static;
+  box-shadow:none
+}
+
+.music-control {
+  min-height:44px;
+  padding:.45rem .85rem;
+  border:1px solid var(--edge-2);
+  border-radius:999px;
+  background:var(--pine-2);
+  color:var(--soft);
+  font:500 .8125rem var(--body);
+  cursor:pointer;
+  backdrop-filter:blur(10px)
+}
+
+.music-control:hover,.music-control[aria-pressed="true"] {
+  color:var(--text);
+  border-color:var(--jade)
+}
+
+.music-status {
+  position:absolute;
+  bottom:100%;
+  right:0;
+  max-width:240px;
+  font-size:.8125rem;
+  line-height:1.5;
+  color:var(--soft);
+  background:var(--pine-2);
+  border-radius:8px;
+  padding:.5rem .7rem;
+  margin-bottom:8px
+}
+
+.music-status:empty {
+  display:none
+}
+
+@media(max-width:680px) {
+  .ambient-controls {
+    right:10px;
+    bottom:10px;
+    max-width:calc(100vw - 20px);
+    gap:6px
+  }
+
+  .music-control {
+    font-size:.75rem
+  }
+
+}
+
+@media print {
+  .ambient-controls {
+    display:none!important
+  }
+
+}

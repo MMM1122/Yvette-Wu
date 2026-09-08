@@ -1,0 +1,256 @@
+/* Rain garden — mineral water, living koi, and softly refracting glass. */
+:root {
+  --pond-paper:#071b20;
+  --pond-image-opacity:.23;
+  --pond-ring:155,210,209;
+  --glass-fill:rgba(12,37,41,.90);
+  --glass-light:rgba(181,232,223,.055);
+  --glass-edge:rgba(184,228,222,.22);
+  --glass-shadow:rgba(0,12,17,.10);
+  --glass-glint:rgba(218,253,242,.27);
+  --rain-light:rgba(207,242,233,.34);
+  --water-veil:rgba(9,30,34,.74);
+  --pine-2:rgba(14,39,43,.78);
+}
+
+[data-theme="light"] {
+  --pond-paper:#f5f9f8;
+  --pond-image-opacity:.40;
+  --pond-ring:54,116,111;
+  --glass-fill:rgba(249,253,252,.88);
+  --glass-light:rgba(255,255,255,.30);
+  --glass-edge:rgba(32,102,116,.18);
+  --glass-shadow:rgba(29,72,64,.035);
+  --glass-glint:rgba(255,255,255,.65);
+  --rain-light:rgba(255,255,255,.70);
+  --water-veil:rgba(245,249,248,.82);
+  --pine-2:rgba(246,252,248,.76);
+  --text:#16373b;
+  --soft:#3e6065;
+  --dim:#57777c;
+  --jade:#176d7a;
+  --jade-2:#288492;
+  --jade-deep:#155766;
+  --avail-strong:#155d69;
+  --cinnabar:#a8412c;
+  --clay:#a8412c;
+  --edge:rgba(43,96,81,.16);
+  --edge-2:rgba(43,96,81,.28);
+}
+
+.pond-scene {
+  z-index:-1;
+  background:var(--pond-paper)
+}
+
+.pond-art {
+  inset:-2%;
+  opacity:var(--pond-image-opacity);
+  background-position:center;
+  filter:none;
+  animation:none;
+  will-change:auto;
+}
+
+.pond-veil {
+  opacity:1;
+  background:linear-gradient(90deg,transparent 0%,var(--water-veil) 31%,var(--water-veil) 64%,transparent 100%),
+    linear-gradient(180deg,transparent 68%,rgba(92,148,135,.055));
+}
+
+.pond-koi {
+  z-index:0;
+  filter:saturate(.50);
+  opacity:1
+}
+
+.pond-rain {
+  z-index:0;
+  opacity:.50
+}
+
+.pond-glass {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.3;
+  background:linear-gradient(117deg,rgba(236,255,247,.11),transparent 24%,transparent 70%,rgba(207,244,230,.06)),
+    radial-gradient(ellipse at 47% -25%,rgba(242,255,242,.19),transparent 64%);
+  box-shadow:inset 0 1px 0 var(--glass-glint),inset 0 0 90px rgba(25,74,64,.035);
+}
+
+@keyframes rain-garden-breath {
+  from {
+    transform:translate3d(-.2%,.25%,0) scale(1)
+  }
+
+  to {
+    transform:translate3d(.2%,-.25%,0) scale(1.018)
+  }
+
+}
+
+/* Thin specular edges and depth make the surfaces read as glass. */
+:root .topbar {
+  background:var(--glass-fill);
+  border-bottom:1px solid var(--glass-edge);
+  -webkit-backdrop-filter:blur(22px) saturate(125%);
+  backdrop-filter:blur(22px) saturate(125%);
+  box-shadow:0 4px 30px var(--glass-shadow),inset 0 1px 0 var(--glass-glint);
+}
+
+:root :is(.availability,.entry,.edu,.skill,.project,.gb-entry,.gb-form,.msg-form,.explorer,.community,.glance) {
+  background:linear-gradient(135deg,var(--glass-light),transparent 44%),var(--glass-fill);
+  border:1px solid var(--glass-edge);
+  border-bottom-color:var(--edge);
+  -webkit-backdrop-filter:blur(17px) saturate(120%);
+  backdrop-filter:blur(17px) saturate(120%);
+  box-shadow:inset 0 1px 0 var(--glass-glint),inset 1px 0 0 rgba(255,255,255,.12),0 12px 34px -12px var(--glass-shadow);
+}
+
+:root .project.featured,:root .availability {
+  border-color:var(--glass-edge);
+  border-top-color:var(--glass-glint)
+}
+
+:root .glance {
+  gap:0
+}
+
+:root .glance>div {
+  background:transparent;
+  border-right:1px solid var(--edge)
+}
+
+:root .glance>div:last-child {
+  border-right:0
+}
+
+:root .project.flash,:root .entry.flash,:root .edu.flash {
+  border-color:var(--jade);
+  background:var(--moss)
+}
+
+:root .ambient-controls {
+  padding:5px;
+  border:1px solid var(--glass-edge);
+  border-radius:999px;
+  background:var(--glass-fill);
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+  box-shadow:0 6px 28px var(--glass-shadow),inset 0 1px 0 var(--glass-glint);
+}
+
+:root .ambient-controls button {
+  background:transparent;
+  border-color:transparent;
+  backdrop-filter:none
+}
+
+:root .ambient-controls button:hover {
+  background:var(--tag-bg);
+  border-color:var(--edge)
+}
+
+:root .button:not(.primary),:root .theme-toggle {
+  background:linear-gradient(135deg,var(--glass-light),transparent),var(--glass-fill)
+}
+
+:root .field input,:root .field textarea {
+  background:var(--tint)
+}
+
+:root .window-photo {
+  box-shadow:0 0 0 5px var(--glass-fill),0 0 0 6px var(--glass-edge),0 22px 54px -28px var(--glass-shadow)
+}
+
+@media(hover:hover) {
+  :root .project:hover,:root .edu:hover {
+    border-color:var(--edge-2);
+    box-shadow:inset 0 1px 0 var(--glass-glint),0 20px 42px -18px var(--glass-shadow)
+  }
+
+}
+
+@media(max-width:1000px) {
+  :root .glance>div {
+    border-bottom:1px solid var(--edge)
+  }
+
+  :root .glance>div:nth-child(2n) {
+    border-right:0
+  }
+
+}
+
+@media(max-width:680px) {
+  .pond-art {
+    background-size:auto 105%;
+    background-position:70% center;
+    opacity:calc(var(--pond-image-opacity) * .78)
+  }
+
+  .pond-veil {
+    opacity:1;
+    background:linear-gradient(90deg,transparent,var(--water-veil) 17%,var(--water-veil) 82%,transparent)
+  }
+
+  :root :is(.availability,.entry,.edu,.skill,.project,.gb-entry,.gb-form,.msg-form,.explorer,.community,.glance) {
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+  }
+
+  .ambient-controls {
+    gap:2px
+  }
+
+}
+
+@media(max-width:560px) {
+  :root .glance>div {
+    border-right:0
+  }
+
+  :root .glance>div:last-child {
+    border-bottom:0
+  }
+
+}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  :root {
+    --glass-fill:#102c30
+  }
+
+  [data-theme="light"] {
+    --glass-fill:#f1f7f2
+  }
+
+}
+
+html[data-pond-paused="true"] .pond-art {
+  animation-play-state:paused
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .pond-art {
+    animation:none;
+    will-change:auto
+  }
+
+}
+
+@media print {
+  .pond-glass {
+    display:none!important
+  }
+
+  :root :is(.availability,.entry,.edu,.skill,.project,.gb-entry,.gb-form,.msg-form,.explorer,.community,.glance) {
+    background:#fff!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    border-color:#c9d6cd!important;
+  }
+
+}

@@ -1,0 +1,274 @@
+/* ---------- message form ---------- */
+.msg-form {
+  max-width:620px;
+  margin:0 auto 2.2rem;
+  text-align:left;
+  background:var(--pine-2);
+  border:1px solid var(--edge);
+  border-radius:16px;
+  padding:1.6rem 1.7rem 1.7rem;
+}
+
+.msg-form h3 {
+  font-size:1.15rem;
+  margin-bottom:.3rem
+}
+
+.contact .msg-hint {
+  color:var(--dim);
+  font-size:.9rem;
+  margin:0 0 1.2rem;
+  max-width:none;
+  text-align:left
+}
+
+.field-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem
+}
+
+.field {
+  display:block;
+  margin-bottom:1rem
+}
+
+.field span {
+  display:block;
+  font-size:.86rem;
+  color:var(--dim);
+  margin-bottom:.35rem
+}
+
+.field input,.field textarea {
+  width:100%;
+  font:inherit;
+  font-size:.98rem;
+  color:var(--text);
+  background:var(--tint);
+  border:1px solid var(--edge-2);
+  border-radius:9px;
+  padding:.65rem .8rem;
+  transition:border-color .18s,background .18s;
+}
+
+.field textarea {
+  resize:vertical;
+  min-height:6.5rem;
+  line-height:1.55
+}
+
+.field input::placeholder,.field textarea::placeholder {
+  color:var(--dim);
+  opacity:.85
+}
+
+.field input:focus,.field textarea:focus {
+  outline:none;
+  border-color:var(--jade);
+  background:var(--tint-2)
+}
+
+.msg-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+  margin-top:.3rem
+}
+
+.msg-actions .button {
+  cursor:pointer;
+  font-family:inherit
+}
+
+.msg-actions .button[disabled] {
+  opacity:.6;
+  cursor:default
+}
+
+.contact .msg-status {
+  font-size:.92rem;
+  margin:1rem 0 0;
+  max-width:none;
+  text-align:left
+}
+
+.msg-status.ok {
+  color:var(--jade)
+}
+
+.msg-status.error {
+  color:#E9A87C
+}
+
+[data-theme="light"] .msg-status.error {
+  color:#A8471C
+}
+
+@media (max-width:620px) {
+  .field-row {
+    grid-template-columns:1fr;
+    gap:0
+  }
+
+  .msg-form {
+    padding:1.3rem 1.25rem 1.4rem
+  }
+
+}
+
+@media print {
+  .msg-form {
+    display:none!important
+  }
+
+}
+
+/* ---------- guestbook ---------- */
+.gb {
+  max-width:760px
+}
+
+.gb-form {
+  background:var(--pine-2);
+  border:1px solid var(--edge);
+  border-radius:16px;
+  padding:1.4rem 1.5rem 1.5rem;
+  margin-bottom:2rem
+}
+
+.gb-form .field {
+  margin-bottom:.9rem
+}
+
+.gb-form .field-row {
+  grid-template-columns:minmax(0,320px)
+}
+
+.gb-actions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.9rem
+}
+
+.gb-actions .button {
+  cursor:pointer;
+  font-family:inherit
+}
+
+.gb-actions .button[disabled] {
+  opacity:.6;
+  cursor:default
+}
+
+.gb-count {
+  font-size:.85rem;
+  color:var(--dim)
+}
+
+.field.trap {
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  overflow:hidden
+}
+
+.gb-state {
+  color:var(--dim);
+  font-size:.95rem;
+  padding:1.4rem 0
+}
+
+.gb-state .button {
+  cursor:pointer;
+  font-family:inherit;
+  margin-top:.8rem
+}
+
+.gb-list {
+  display:grid;
+  gap:.9rem
+}
+
+.gb-entry {
+  display:grid;
+  grid-template-columns:2.4rem 1fr;
+  gap:1rem;
+  align-items:start;
+  background:var(--tint);
+  border:1px solid var(--edge);
+  border-radius:14px;
+  padding:1.05rem 1.2rem
+}
+
+.gb-avatar {
+  width:2.4rem;
+  height:2.4rem;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.05rem;
+  background:var(--tag-bg);
+  color:var(--jade);
+  border:1px solid var(--avail-edge);
+}
+
+.gb-meta {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:.2rem .7rem;
+  margin-bottom:.25rem
+}
+
+.gb-meta strong {
+  font-size:1rem;
+  font-weight:600
+}
+
+.gb-meta span {
+  font-size:.83rem;
+  color:var(--dim)
+}
+
+.gb-entry p {
+  margin:0;
+  color:var(--soft);
+  line-height:1.6;
+  max-width:none;
+  overflow-wrap:anywhere
+}
+
+.gb-more {
+  cursor:pointer;
+  font-family:inherit;
+  margin-top:1rem
+}
+
+@media (max-width:620px) {
+  .gb-form {
+    padding:1.2rem 1.15rem 1.3rem
+  }
+
+  .gb-entry {
+    grid-template-columns:1fr;
+    gap:.55rem;
+    padding:1rem 1.1rem
+  }
+
+  .gb-avatar {
+    display:none
+  }
+
+}
+
+@media print {
+  #guestbook {
+    display:none!important
+  }
+
+}

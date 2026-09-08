@@ -1,4 +1,4 @@
-/* 页面章节顺序和 React 挂载入口。 */
+/* Page section order and React mount entry point. */
 
 function App() {
   return h(React.Fragment, null, h("a", {

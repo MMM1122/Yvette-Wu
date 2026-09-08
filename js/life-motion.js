@@ -1,4 +1,4 @@
-/* 项目卡片的悬浮光线和轻微倾斜；连接章节动效。 */
+/* Project card hover glow and subtle tilt effects; connects chapter transitions. */
 
 function LifeMotion() {
   useEffect(() => {

@@ -1,4 +1,5 @@
-/* 木鱼互动、敲击音效、动画和植物生长彩蛋。 */
+/* Wooden fish interaction, tap sound effects, animations, 
+and plant growth Easter egg. */
 
 function WoodenFish() {
   const [count, setCount] = useState(0);

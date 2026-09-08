@@ -1,4 +1,5 @@
-/* 首屏姓名与求职信息、照片窗户，以及简历概览。 */
+/* Above-the-fold name and job-seeking details, 
+portrait window, and resume overview. */
 
 function PortraitWindow() {
   const [open, setOpen] = useState(false);

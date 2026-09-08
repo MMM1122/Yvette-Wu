@@ -1,4 +1,5 @@
-/* 简历数据：工作经历、教育、项目、技能和导航文字。修改内容优先看这里。 */
+/* Resume data: work experience, education, projects, skills, and 
+navigation labels. Start here when updating content. */
 
 const AXIS_START = 2017.3,
   AXIS_END = 2028.8;

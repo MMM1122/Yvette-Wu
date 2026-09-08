@@ -1,4 +1,4 @@
-/* React 简写、图标和页面共用的小工具。 */
+/* React shorthand, icons, and shared page utilities. */
 
 const {
   useState,

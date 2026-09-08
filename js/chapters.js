@@ -1,4 +1,5 @@
-/* 随滚动浮近的章节层次；保留自然滚动和无动画阅读模式。 */
+/* Chapter layers that emerge on scroll; preserves natural scrolling 
+and reduced-motion reading mode. */
 
 function chapterMotion() {
   const sections = Array.from(document.querySelectorAll('main > section:not(.hero)'));

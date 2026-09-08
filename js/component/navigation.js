@@ -1,4 +1,4 @@
-/* 顶部导航、移动端菜单和深浅主题切换。 */
+/* Top navigation bar, mobile menu, and light/dark theme toggle. */
 
 function ThemeToggle() {
   const [theme, setTheme] = useState("light");

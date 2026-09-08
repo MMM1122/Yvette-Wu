@@ -1,4 +1,5 @@
-/* 图片资源、邮箱和服务地址。图片路径相对于 index.html。 */
+/* Image assets, email, and service endpoints. 
+Image paths are relative to index.html. */
 
 const AVATAR = "assets/images/avatar.jpg";
 

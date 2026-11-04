@@ -97,80 +97,232 @@ const POLICIES = [{
   note: "Minimises expected loss using each customer's actual balance, cutting it from NT$135.6M to NT$37.3M (−72.5%). But it would also decline 5,210 of the 7,009 customers who never defaulted, which is not practical."
 }];
 
-const PROJECTS = [{
-  id: "credit",
-  name: "Credit card default prediction",
-  kind: "Machine learning · Python",
-  question: "Can six months of billing history predict who will miss their next payment — and how should a lender actually use that prediction?",
-  figures: [{
-    n: "0.789",
-    l: "Test ROC-AUC [0.778, 0.801]"
-  }, {
-    n: "0.575",
-    l: "Test average precision"
-  }, {
-    n: "30,000",
-    l: "Customers, six months each"
-  }],
-  bullets: ["Built a delinquency-recency feature that ranked first in both SHAP (0.385 mean |SHAP|) and permutation importance (0.116) — roughly three times the next feature. How recently someone missed a payment beat how often they missed one.", "Selected models on average precision rather than accuracy or F1, because only 22% of customers defaulted and accuracy flatters a model that predicts no default for everyone.", "Compared models with a Nadeau–Bengio corrected paired t-test over 15 folds. Tuned LightGBM improved average precision over logistic regression by 0.042 (p < 0.001).", "Checked calibration before using the probabilities in the cost analysis: mean predicted probability 0.2212 against an observed default rate of 0.2212.", "Removed sex and marital status and re-measured — cross-validated average precision was unchanged to three decimals. Dropping protected attributes does not by itself rule out proxy effects, so outcomes were checked too."],
-  pull: "Under different loss and margin assumptions the best threshold moves between 0.02 and 0.33. The threshold depends so heavily on real business costs that a sensitivity table is more honest than presenting one cutoff as the answer.",
-  pullWho: "Section 12 — threshold and cost analysis",
-  tags: ["Python", "LightGBM", "scikit-learn", "SHAP", "Pandas", "Jupyter"],
-  links: [{
-    label: "Read the notebook on GitHub",
-    href: "https://github.com/MMM1122/Credit-Default-Prediction"
-  }]
-}, {
-  id: "shop",
-  name: "Zhuanzhuan Shop",
-  kind: "Storefront · live",
-  question: "A bilingual online shop for handmade ceramic spinners — designed, built and run by me, from product photos to checkout.",
-  figures: [{
-    n: "24",
-    l: "Pieces across seven series"
-  }, {
-    n: "2",
-    l: "Languages, switchable mid-visit"
-  }, {
-    n: "1",
-    l: "HTML file, photos included"
-  }],
-  bullets: ["Every order gets a unique ID, and the site generates a copyable e-Transfer memo with that ID, the items and contact details, so incoming payments match orders without manual guesswork.", "Takes a five-dollar Interac e-Transfer deposit instead of full card payment, which confirms the order before pickup without ever handling card data.", "Runs English and Chinese from one shared translation dictionary rather than two pages, detects browser language on load and switches without a reload.", "Ships as a single self-contained HTML file, product photos included — no build step, no external asset hosting."],
-  tags: ["Single-file HTML", "Vanilla JavaScript", "Bilingual i18n", "GitHub Pages"],
-  links: [{
-    label: "Visit the shop",
-    href: "https://mmm1122.github.io/zhuanzhuanshop"
-  }, {
-    label: "Source on GitHub",
-    href: "https://github.com/MMM1122/zhuanzhuanshop"
-  }]
-}, {
-  id: "perler",
-  name: "CyberPerler",
-  kind: "Browser tool · live",
-  question: "Upload a photo, turn it into a Perler bead pattern, then keep editing the result by hand.",
-  figures: [{
-    n: "58",
-    l: "Bead colours, matched in CIELAB"
-  }, {
-    n: "6",
-    l: "Board sizes, 14×14 to 87×87"
-  }, {
-    n: "7,569",
-    l: "Beads on the largest board"
-  }],
-  bullets: ["Matches colours in CIELAB rather than RGB so nearest-colour matching follows human perception; palette conversions are cached once and reused.", "Offers adjustable Floyd–Steinberg dithering, which can be dialled down for small patterns where it adds noise instead of accuracy.", "Caps the number of colours per pattern, making designs easier to build and cheaper to buy beads for.", "Generates a shopping list with the bead count per colour and the number of 1,000-bead packs needed, and exports the grid as an upscaled PNG with smoothing off."],
-  pull: "On-screen hex values are approximations rather than official Perler swatch data, so physical colours should be checked before ordering beads.",
-  pullWho: "Note shown in the palette panel",
-  tags: ["Single-file HTML", "Vanilla JavaScript", "Canvas API", "CIELAB colour matching", "Floyd–Steinberg dithering"],
-  links: [{
-    label: "Try it",
-    href: "https://mmm1122.github.io/CyberPerler/"
-  }, {
-    label: "Source on GitHub",
-    href: "https://github.com/MMM1122/CyberPerler"
-  }]
-}];
+const PROJECTS = [
+  {
+    "id": "paw",
+    "name": "PAW — Public Art Walk",
+    "kind": "BCS Hackathon 2026",
+    "featured": true,
+    "award": "Best Beginner Project Winner",
+    "question": "Turn an ordinary walk through Vancouver into a public art discovery: explore the map, follow a themed tour, and listen to the stories behind each artwork.",
+    "figures": [
+      {
+        "n": "138",
+        "l": "Downtown artworks in the core collection"
+      },
+      {
+        "n": "2",
+        "l": "Curated walking tours"
+      },
+      {
+        "n": "22",
+        "l": "Vancouver neighbourhoods to explore"
+      }
+    ],
+    "bullets": [
+      "Built with React, TypeScript and Leaflet, using the City of Vancouver Public Art Registry to connect artwork locations, artist profiles and source-linked stories.",
+      "Added themed walking tours with ordered stops, progress tracking and observation challenges grounded in the artwork records.",
+      "Used the Web Speech API for audio narration with sentence highlighting, playback speed controls and text that visitors can follow while listening.",
+      "Extended the project with saved art collections and custom walks. Profiles, collections and visited stops persist in the current browser."
+    ],
+    "pull": "Route and accessibility preferences are planning aids; the available map and registry data do not establish that a route is step-free. Personal collections stay in the current browser.",
+    "pullWho": "Data and prototype limits",
+    "tags": [
+      "React",
+      "TypeScript",
+      "Leaflet",
+      "Vancouver open data",
+      "Web Speech API"
+    ],
+    "links": [
+      {
+        "label": "View the winning project",
+        "href": "https://devpost.com/software/paw-public-art-walk"
+      },
+      {
+        "label": "Source on GitHub",
+        "href": "https://github.com/MMM1122/BCS_HACKTHON_2026"
+      }
+    ]
+  },
+  {
+    "id": "color-fingerprint",
+    "name": "Color Fingerprint",
+    "kind": "Music & perception · live",
+    "question": "What colours do you hear? Map your own sound-to-colour associations, then watch music unfold through your personal palette.",
+    "figures": [
+      {
+        "n": "60",
+        "l": "Sound-to-colour calibration trials"
+      },
+      {
+        "n": "4",
+        "l": "Timbres across five notes"
+      },
+      {
+        "n": "4",
+        "l": "Music visualization styles"
+      }
+    ],
+    "bullets": [
+      "Designed a randomized calibration using piano, pure tone, bowed strings and voice, with repeated trials to explore the consistency of each listener's colour choices.",
+      "Mapped pitch and timbre to personal colour anchors using perceptual colour spaces, then rendered fireworks, water drops, geometry and soft glow with Three.js.",
+      "Connected Web Audio analysis to built-in music, uploaded tracks and microphone input. Audio, microphone and camera data stay on the device.",
+      "Added retest comparisons, JSON backup and palette share cards, plus optional Supabase accounts for syncing calibration results across devices."
+    ],
+    "pull": "An exploration of personal associations, not a diagnostic test for synesthesia. Instrument matching in mixed music is approximate; reduced-motion mode uses soft glow.",
+    "pullWho": "Perception and visualization limits",
+    "tags": [
+      "TypeScript",
+      "Three.js",
+      "Web Audio API",
+      "Tone.js",
+      "Supabase",
+      "Colour science"
+    ],
+    "links": [
+      {
+        "label": "Find your colour fingerprint",
+        "href": "https://color-fingerprint.fun"
+      },
+      {
+        "label": "Source on GitHub",
+        "href": "https://github.com/MMM1122/color_fingerprint"
+      }
+    ]
+  },
+  {
+    "id": "corridor-of-thought",
+    "name": "Corridor of Thought",
+    "kind": "Research & knowledge · live",
+    "question": "Explore how ideas evolve: read and revise papers, trace arguments back to their sources, and compare perspectives in a shared research workspace.",
+    "figures": [
+      {
+        "n": "4",
+        "l": "Original papers to explore"
+      },
+      {
+        "n": "2D / 3D",
+        "l": "Source-linked argument graphs"
+      },
+      {
+        "n": "Local",
+        "l": "Browser storage, no sign-in required"
+      }
+    ],
+    "bullets": [
+      "Built a PDF reading and revision workflow with preserved originals, editable working copies, autosave, snapshots and revision comparisons.",
+      "Connected argument and concept nodes to exact source passages, with interactive 2D graphs and a Three.js corridor for exploring relationships.",
+      "Added paper comparisons, evidence-backed alignments, feedback records and reflections so interpretations can be reviewed alongside the passages they refer to.",
+      "Made the live edition work in the browser without sign-in, with backup and restore. The local Next.js edition adds SQLite storage and optional server-side AI suggestions."
+    ],
+    "pull": "Lexical matches and argument relationships are suggestions to review, not proof of meaning or causation. Browser work needs a separate backup; optional AI analysis is available in the local edition.",
+    "pullWho": "Source integrity and storage limits",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "Tiptap",
+      "SQLite",
+      "PDF workflows"
+    ],
+    "links": [
+      {
+        "label": "Explore the corridor",
+        "href": "https://corridor-of-thought.fun"
+      },
+      {
+        "label": "Source on GitHub",
+        "href": "https://github.com/MMM1122/CORRIDOR_OF_THOUGHT"
+      }
+    ]
+  },
+  {
+    "id": "credit",
+    "name": "Credit card default prediction",
+    "kind": "Machine learning · Python",
+    "question": "Can six months of billing history predict who will miss their next payment — and how should a lender actually use that prediction?",
+    "figures": [
+      {
+        "n": "0.789",
+        "l": "Test ROC-AUC [0.778, 0.801]"
+      },
+      {
+        "n": "0.575",
+        "l": "Test average precision"
+      },
+      {
+        "n": "30,000",
+        "l": "Customers, six months each"
+      }
+    ],
+    "bullets": [
+      "Built a delinquency-recency feature that ranked first in both SHAP (0.385 mean |SHAP|) and permutation importance (0.116) — roughly three times the next feature. How recently someone missed a payment beat how often they missed one.",
+      "Selected models on average precision rather than accuracy or F1, because only 22% of customers defaulted and accuracy flatters a model that predicts no default for everyone.",
+      "Compared models with a Nadeau–Bengio corrected paired t-test over 15 folds. Tuned LightGBM improved average precision over logistic regression by 0.042 (p < 0.001).",
+      "Checked calibration before using the probabilities in the cost analysis: mean predicted probability 0.2212 against an observed default rate of 0.2212.",
+      "Removed sex and marital status and re-measured — cross-validated average precision was unchanged to three decimals. Dropping protected attributes does not by itself rule out proxy effects, so outcomes were checked too."
+    ],
+    "pull": "Under different loss and margin assumptions the best threshold moves between 0.02 and 0.33. The threshold depends so heavily on real business costs that a sensitivity table is more honest than presenting one cutoff as the answer.",
+    "pullWho": "Section 12 — threshold and cost analysis",
+    "tags": [
+      "Python",
+      "LightGBM",
+      "scikit-learn",
+      "SHAP",
+      "Pandas",
+      "Jupyter"
+    ],
+    "links": [
+      {
+        "label": "Read the notebook on GitHub",
+        "href": "https://github.com/MMM1122/Credit-Default-Prediction"
+      }
+    ]
+  },
+  {
+    "id": "wonder-lab",
+    "name": "Wonder Lab",
+    "kind": "Frontend preview · In progress",
+    "question": "A bilingual personal journal where a forest adventure opens into a psychedelic world of ideas, mathematical geometry and ambient sound.",
+    "figures": [
+      {
+        "n": "2",
+        "l": "Languages: English and Chinese"
+      },
+      {
+        "n": "4",
+        "l": "Chapters in the opening adventure"
+      },
+      {
+        "n": "3",
+        "l": "Procedural geometry studies"
+      }
+    ],
+    "bullets": [
+      "Built a shared React and TypeScript interface for bilingual sample articles, category filtering and a reading dialog, with a static export that can run on GitHub Pages.",
+      "Combined AI-generated forest and character artwork with an eight-frame walking sprite and timed CSS transitions through the forest, cave, fall and arrival. The opening supports skipping, replay and reduced-motion preferences.",
+      "Generated torus wireframes, golden-angle phyllotaxis and hypotrochoid curves as SVG from mathematical coordinates, keeping the artwork sharp at different sizes.",
+      "Synthesized optional ambient sound in the browser with the Web Audio API: oscillators, volume envelopes and delay, with playback and volume controls."
+    ],
+    "pull": "The current frontend preview uses sample content. Publishing, sign-in and persistent visitor messages are not connected in this static edition. Still working on smoother movement and the complete writing and guestbook experience.",
+    "pullWho": "Current scope · Work in progress",
+    "tags": [
+      "React",
+      "TypeScript",
+      "CSS animation",
+      "SVG geometry",
+      "Web Audio API",
+      "GitHub Pages"
+    ],
+    "links": [
+      {
+        "label": "Explore the frontend preview",
+        "href": "https://mmm1122.github.io/wonderlab/"
+      }
+    ]
+  }
+];
 
 const SKILLS = [{
   title: "Languages",

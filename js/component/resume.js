@@ -158,12 +158,14 @@ function Project({
   p
 }) {
   return h("article", {
-    className: "project" + (p.id === "credit" ? " featured" : "")
+    className: "project" + (p.featured ? " featured" : "")
   }, h("div", {
     className: "project-top"
   }, h("h3", null, p.name), h("span", {
     className: "kind"
-  }, p.kind)), h("p", {
+  }, p.kind)), p.award && h("p", {
+    className: "project-award"
+  }, h("span", { "aria-hidden": "true" }, "★"), p.award), h("p", {
     className: "question"
   }, p.question), h("div", {
     className: "figures"
@@ -202,7 +204,7 @@ function Projects() {
     id: "projects"
   }, h("h2", null, "Things I've built"), h("p", {
     className: "section-note"
-  }, "Three projects taken from start to finish. Each one opens up to the technical decisions behind it, including the limits I ran into."), PROJECTS.map(p => h(Project, {
+  }, "A selection of finished projects and ongoing experiments. Open each one to explore the technical decisions, trade-offs and work still in progress."), PROJECTS.map(p => h(Project, {
     key: p.id,
     p: p
   })));

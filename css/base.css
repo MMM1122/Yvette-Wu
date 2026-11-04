@@ -743,6 +743,22 @@ section.hero {
   background:var(--feature-bg)
 }
 
+.project-award {
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  max-width:100%;
+  margin:.2rem 0 1rem;
+  padding:.4rem .8rem;
+  border:1px solid currentColor;
+  border-radius:999px;
+  color:var(--sand);
+  background:var(--tint);
+  font-size:.85rem;
+  font-weight:700;
+  line-height:1.5
+}
+
 .project-top {
   display:flex;
   flex-wrap:wrap;

@@ -231,7 +231,7 @@ function About() {
     id: "about"
   }, h("h2", null, "A little about me"), h("div", {
     className: "about"
-  }, h("div", null, h("p", null, "I travel whenever I get the chance, ideally somewhere I have never been, without much of a plan. The best trips have been the ones where I did not know what to expect, and I come home with a few good stories."), h("p", null, "I take psychology and cognitive science courses when I can. Outside school it is detective stories — novels, games, and ", h("em", null, "Lie to Me"), " and ", h("em", null, "Elementary"), ", both of which I have rewatched more times than I will admit. I also play the guzheng (Grade 9), and fill in the rest with badminton, swimming, Zumba, or a hike when the weather allows."), h("div", {
+  }, h("div", null, h("p", null, "I travel whenever I get the chance, ideally somewhere I have never been, without much of a plan. The best trips have been the ones where I did not know what to expect, and I come home with a few good stories."), h("p", null, "I take psychology and cognitive science courses when I can. Outside school it is detective stories — novels, games, and ", h("em", null, "Lie to Me"), " and ", h("em", null, "Elementary"), ", both of which I have rewatched more times than I will admit. I also play the guzheng (Grade 9), and fill in the rest with badminton, swimming, Zumba, or a hike when the weather allows. When I dance Zumba, I feel like a monkey in the forest."), h("div", {
     className: "chips"
   }, ["Guzheng, Grade 9", "Badminton & swimming", "Zumba", "Lie to Me & Elementary", "R&B and jazz"].map(t => h("span", {
     className: "chip",
